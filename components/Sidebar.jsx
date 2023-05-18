@@ -1,5 +1,7 @@
 import Image from "next/image";
 import logoSideBar from "../assets/Logo.svg";
+import iconProduct from "../assets/IconProduct.svg";
+import iconUser from "../assets/IconUser.svg";
 
 const Sidebar = ({ isOpen }) => {
   return (
@@ -10,15 +12,35 @@ const Sidebar = ({ isOpen }) => {
     >
       {/* <h2 className="text-xl font-semibold">Sidebar</h2> */}
       <Image src={logoSideBar} alt="Logo Sidebar" width={35} height={35} />
-      <p className="text-l font-semibold text-gray-600 mt-8">Pages</p>
+      <p className="text-l font-semibold text-gray-500 mt-8">Pages</p>
       <ul className="mt-3">
-        <li className="mb-1 hover:bg-gray-900 px-3 py-4 rounded-lg">
-          <a href="#" className="text-gray-300 font-semibold hover:text-white">
+        <li className="mb-2 hover:bg-gray-900 px-3 py-3 rounded-md">
+          <Image
+            src={iconProduct}
+            alt="Icon Product"
+            className="inline-block mr-4"
+            width={32}
+            height={32}
+          />
+          <a
+            href="#"
+            className="text-gray-300 inline-block font-semibold hover:text-white"
+          >
             Product
           </a>
         </li>
-        <li className=" hover:bg-gray-900 px-3 py-4 rounded-lg">
-          <a href="#" className="text-gray-300 font-semibold hover:text-white">
+        <li className="mb-2 hover:bg-gray-900 px-3 py-3 rounded-md">
+          <Image
+            src={iconUser}
+            alt="Icon User"
+            className="inline-block mr-4"
+            width={32}
+            height={32}
+          />
+          <a
+            href="#"
+            className="text-gray-300 inline-block font-semibold hover:text-white"
+          >
             User
           </a>
         </li>

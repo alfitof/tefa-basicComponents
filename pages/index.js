@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
 
 const Home = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
@@ -10,6 +11,7 @@ const Home = () => {
 
   return (
     <div>
+      <Header />
       <button
         className="fixed bottom-4 right-4 z-50 p-2 text-gray-600 bg-gray-400 rounded-md shadow"
         onClick={toggleSidebar}
@@ -30,7 +32,6 @@ const Home = () => {
         </svg>
       </button>
       <Sidebar isOpen={isSidebarOpen} />
-      <main className="ml-64 p-4">{/* Konten utama di sini */}</main>
     </div>
   );
 };
