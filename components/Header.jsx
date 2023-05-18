@@ -7,7 +7,7 @@ import Line from "../assets/Line.svg";
 
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 z-50 w-full px-4 py-2 bg-white">
+    <header className="fixed top-0 left-0 z-50 w-full px-4 py-2 bg-white border-b-2 border-gray-100 drop-shadow-md">
       <div className="flex items-center justify-between">
         <button className="p-2 text-gray-500 rounded-md hover:text-white focus:outline-none"></button>
         <nav>
