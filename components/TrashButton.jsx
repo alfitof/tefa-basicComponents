@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const TrashButton = ({ props }) => {
+const TrashButton = ({ props, onDelete }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenPopup = (event) => {
@@ -16,7 +16,7 @@ const TrashButton = ({ props }) => {
   const handleDeleteItem = (event) => {
     // Lakukan aksi penghapusan item
     event.stopPropagation();
-    console.log(`Item dengan id:${props.id} telah dihapus`);
+    onDelete(props.id);
     setIsOpen(false);
   };
 
@@ -41,9 +41,9 @@ const TrashButton = ({ props }) => {
         </svg>
       </button>
       {isOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
+        <div className="fixed inset-0 flex items-start justify-center z-50">
           <div className="absolute inset-0 bg-gray-800 opacity-50 rounded-md"></div>
-          <div className="bg-white p-8 rounded shadow-lg relative z-50">
+          <div className="bg-white p-8 mt-32 rounded shadow-lg relative z-50">
             <h2 className="text-lg font-semibold mb-4">
               Hapus item {props.productName || props.username}?
             </h2>

@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const categories = ["Category 1", "Category 2", "Category 3", "Category 4"];
+  const categories = ["Ready", "Pre-Order", "Barang Bekas"];
 
   const handleToggle = () => {
     setIsOpen(!isOpen);

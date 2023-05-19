@@ -12,8 +12,6 @@ const Sidebar = ({ isOpen }) => {
         isOpen ? "translate-x-0" : "-translate-x-full"
       }`}
     >
-      {/* <h2 className="text-xl font-semibold">Sidebar</h2> */}
-
       <Image
         src={logoSideBar}
         alt="Logo Sidebar"
@@ -26,8 +24,11 @@ const Sidebar = ({ isOpen }) => {
       <p className="text-l font-semibold text-gray-500 mt-8">Pages</p>
       <ul className="mt-3">
         <li
-          className="mb-2 hover:bg-gray-900 px-3 py-3 rounded-md"
-          onClick={() => router.push("/")}
+          className={
+            "mb-2 hover:bg-gray-900 px-3 py-3 rounded-md" +
+            (router.pathname == "/products" ? " bg-gray-900" : "")
+          }
+          onClick={() => router.push("/products")}
         >
           <Image
             src={iconProduct}
@@ -44,7 +45,10 @@ const Sidebar = ({ isOpen }) => {
           </a>
         </li>
         <li
-          className="mb-2 hover:bg-gray-900 px-3 py-3 rounded-md"
+          className={
+            "mb-2 hover:bg-gray-900 px-3 py-3 rounded-md" +
+            (router.pathname == "/users" ? " bg-gray-900" : "")
+          }
           onClick={() => router.push("/users")}
         >
           <Image
