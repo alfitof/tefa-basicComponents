@@ -1,18 +1,8 @@
 import Image from "next/image";
 import React from "react";
-import { useState } from "react";
 import TrashButton from "./TrashButton";
 
 const Table = ({ items, columns, handleRowClick }) => {
-  const [productList, setProductList] = useState(items);
-
-  const handleDeleteItem = (items) => {
-    const updatedProductList = productList.map((product) =>
-      product.id === items.id ? { ...product, isDeleted: true } : product
-    );
-    setProductList(updatedProductList);
-  };
-
   return (
     <div class="relative overflow-x-auto overflow-y-auto max-h-96">
       <table className="w-full border-collapse">
@@ -81,7 +71,7 @@ const Table = ({ items, columns, handleRowClick }) => {
                 </td>
               ))}
               <td className="py-2 px-4 text-center">
-                <TrashButton props={item} onDelete={handleDeleteItem} />
+                <TrashButton props={item} />
               </td>
             </tr>
           ))}

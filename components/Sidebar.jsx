@@ -37,10 +37,7 @@ const Sidebar = ({ isOpen }) => {
             width={32}
             height={32}
           />
-          <a
-            href="#"
-            className="text-gray-300 inline-block font-semibold hover:text-white"
-          >
+          <a className="text-gray-300 inline-block font-semibold hover:text-white">
             Product
           </a>
         </li>
@@ -58,10 +55,7 @@ const Sidebar = ({ isOpen }) => {
             width={32}
             height={32}
           />
-          <a
-            href="#"
-            className="text-gray-300 inline-block font-semibold hover:text-white"
-          >
+          <a className="text-gray-300 inline-block font-semibold hover:text-white">
             User
           </a>
         </li>

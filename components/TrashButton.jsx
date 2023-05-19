@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const TrashButton = ({ props, onDelete }) => {
+const TrashButton = ({ props }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleOpenPopup = (event) => {
@@ -16,7 +16,6 @@ const TrashButton = ({ props, onDelete }) => {
   const handleDeleteItem = (event) => {
     // Lakukan aksi penghapusan item
     event.stopPropagation();
-    onDelete(props.id);
     setIsOpen(false);
   };
 
@@ -45,20 +44,20 @@ const TrashButton = ({ props, onDelete }) => {
           <div className="absolute inset-0 bg-gray-800 opacity-50 rounded-md"></div>
           <div className="bg-white p-8 mt-32 rounded shadow-lg relative z-50">
             <h2 className="text-lg font-semibold mb-4">
-              Hapus item {props.productName || props.username}?
+              Hapus item {props.name || props.username}?
             </h2>
             <p className="mb-4">Apakah Anda yakin ingin menghapus item ini?</p>
             <div className="flex justify-end">
               <button
                 type="button"
-                className="px-4 py-2 mr-2 text-gray-500 hover:text-gray-700"
+                className="px-4 py-2 mr-2 text-white bg-gray-800 rounded-md hover:bg-gray-900"
                 onClick={handleClosePopup}
               >
                 Batal
               </button>
               <button
                 type="button"
-                className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded"
+                className="px-4 py-2 text-white bg-gray-800 rounded-md hover:bg-gray-900"
                 onClick={handleDeleteItem}
               >
                 Hapus
