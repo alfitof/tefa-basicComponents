@@ -7,13 +7,18 @@ const Table = ({ items, columns, handleRowClick }) => {
     <div class="relative overflow-x-auto">
       <table className="w-full border-collapse">
         <thead>
-          <tr className="bg-gray-200">
+          <tr className="bg-gray-100">
             {columns.map((column, index) => (
-              <th key={index} className="py-2 px-4">
+              <th
+                key={index}
+                className="py-2 px-4 text-gray-400 font-normal uppercase text-sm"
+              >
                 {column.header}
               </th>
             ))}
-            <th className="py-2 px-4 ">Action</th>
+            <th className="py-2 px-4 text-gray-400 font-normal uppercase text-sm">
+              Action
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -24,17 +29,35 @@ const Table = ({ items, columns, handleRowClick }) => {
               className="cursor-pointer hover:bg-gray-200"
             >
               {columns.map((column, columnIndex) => (
-                <td key={columnIndex} className="py-2 px-4 text-center">
+                <td
+                  key={columnIndex}
+                  className="py-2 px-4 text-start text-base"
+                >
                   {column.field === "username" ? (
-                    <>
+                    <div className="flex items-center">
                       <Image
                         src={item.profilePicture}
                         alt="Profile"
-                        width={30}
-                        height={30}
+                        className="rounded-full"
+                        width={50}
+                        height={50}
                       />
-                      {item.username}
-                    </>
+
+                      <p className="ml-6">{item.username}</p>
+                    </div>
+                  ) : column.field === "name" ? (
+                    <div className="flex items-center">
+                      <Image
+                        src={item.image}
+                        alt="Image Product"
+                        className="rounded-full"
+                        width={50}
+                        height={50}
+                      />
+                      <p className="ml-6">{item.name}</p>
+                    </div>
+                  ) : column.field === "productPrice" ? (
+                    <p className="text-green-500">{item.productPrice}</p>
                   ) : (
                     item[column.field]
                   )}

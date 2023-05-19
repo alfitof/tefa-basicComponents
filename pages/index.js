@@ -3,8 +3,8 @@ import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import Table from "../components/Table";
 import Dropdown from "../components/Dropdown";
-import Link from "next/link";
 import { useRouter } from "next/router";
+import { products } from "../dataProduct";
 
 const Home = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
@@ -20,40 +20,11 @@ const Home = () => {
     });
   };
   const columns = [
-    { header: "ID", field: "id" },
-    { header: "Product Name", field: "productName" },
+    { header: "Product Name", field: "name" },
     { header: "Description", field: "description" },
-    { header: "Product Price", field: "productPrice" },
+    { header: "Product Price", field: "price" },
     { header: "Category", field: "category" },
-    { header: "Expire Date", field: "expireDate" },
-  ];
-
-  const products = [
-    {
-      id: 1,
-      productName: "Product 1",
-      description: "Lorem ipsum dolor sit amet",
-      productPrice: 10.99,
-      category: "Category A",
-      expireDate: "2023-05-31",
-    },
-    {
-      id: 2,
-      productName: "Product 2",
-      description: "Consectetur adipiscing elit",
-      productPrice: 19.99,
-      category: "Category B",
-      expireDate: "2023-06-15",
-    },
-    {
-      id: 3,
-      productName: "Product 3",
-      description: "Amratur Elisio Saikoro",
-      productPrice: 39.99,
-      category: "Category C",
-      expireDate: "2023-07-08",
-    },
-    // Tambahkan data produk lainnya di sini
+    { header: "Expire Date", field: "expiryDate" },
   ];
 
   return (

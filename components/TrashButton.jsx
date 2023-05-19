@@ -16,7 +16,7 @@ const TrashButton = ({ props }) => {
   const handleDeleteItem = (event) => {
     // Lakukan aksi penghapusan item
     event.stopPropagation();
-    console.log("Item dihapus");
+    console.log(`Item dengan id:${props.id} telah dihapus`);
     setIsOpen(false);
   };
 
@@ -45,8 +45,7 @@ const TrashButton = ({ props }) => {
           <div className="absolute inset-0 bg-gray-800 opacity-50 rounded-md"></div>
           <div className="bg-white p-8 rounded shadow-lg relative z-50">
             <h2 className="text-lg font-semibold mb-4">
-              Hapus item {props === "user" ? props.username : props.productName}
-              ?
+              Hapus item {props.productName || props.username}?
             </h2>
             <p className="mb-4">Apakah Anda yakin ingin menghapus item ini?</p>
             <div className="flex justify-end">

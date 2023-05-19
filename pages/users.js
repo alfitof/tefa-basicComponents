@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
 import Table from "@/components/Table";
+import { user } from "../dataUser";
 import { useRouter } from "next/router";
 
 export default function Users() {
@@ -13,9 +14,9 @@ export default function Users() {
 
   const router = useRouter();
 
-  const handleRowClick = () => {
+  const handleRowClick = (user) => {
     router.push({
-      pathname: `/`,
+      pathname: `/users/${user.id}`,
     });
   };
 
@@ -24,29 +25,6 @@ export default function Users() {
     { header: "Email", field: "email" },
   ];
 
-  const user = [
-    {
-      id: "usr7711",
-      username: "rlaffin0",
-      email: "dsquibb0@google.com.br",
-      profilePicture: "http://dummyimage.com/200x200.png/ff4444/ffffff",
-      isDeleted: false,
-    },
-    {
-      id: "usr4455",
-      username: "fflower1",
-      email: "astieger1@icq.com",
-      profilePicture: "http://dummyimage.com/200x200.png/5fa2dd/ffffff",
-      isDeleted: false,
-    },
-    {
-      id: "usr1630",
-      username: "ccoombe2",
-      email: "mcossell2@indiatimes.com",
-      profilePicture: "http://dummyimage.com/200x200.png/dddddd/000000",
-      isDeleted: false,
-    },
-  ];
   return (
     <>
       <Header />
