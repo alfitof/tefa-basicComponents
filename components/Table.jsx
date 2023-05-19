@@ -56,8 +56,15 @@ const Table = ({ items, columns, handleRowClick }) => {
                       />
                       <p className="ml-6">{item.name}</p>
                     </div>
-                  ) : column.field === "productPrice" ? (
-                    <p className="text-green-500">{item.productPrice}</p>
+                  ) : column.field === "price" ? (
+                    <p className="text-green-500">
+                      {item.price
+                        .toLocaleString("id-ID", {
+                          style: "currency",
+                          currency: "IDR",
+                        })
+                        .replace(/\,00$/, "")}
+                    </p>
                   ) : (
                     item[column.field]
                   )}
