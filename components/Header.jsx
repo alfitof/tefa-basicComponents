@@ -34,7 +34,7 @@ const Header = () => {
               <button
                 id="dropdownDefaultButton"
                 data-dropdown-toggle="dropdown"
-                class="bg-white align-middle hover:bg-gray-200  focus:outline-none font-medium rounded-lg text-sm pr-2  text-center inline-flex items-center"
+                class="bg-white align-middle  focus:outline-none font-medium rounded-lg text-sm pr-2  text-center inline-flex items-center"
                 type="button"
               >
                 <Image

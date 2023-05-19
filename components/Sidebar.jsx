@@ -2,8 +2,10 @@ import Image from "next/image";
 import logoSideBar from "../assets/Logo.svg";
 import iconProduct from "../assets/IconProduct.svg";
 import iconUser from "../assets/IconUser.svg";
+import { useRouter } from "next/router";
 
 const Sidebar = ({ isOpen }) => {
+  const router = useRouter();
   return (
     <aside
       className={`fixed inset-y-0 left-0 z-50 flex-shrink-0 w-64 px-4 py-6 bg-gray-800 text-white transform transition-all duration-300 ${
@@ -11,10 +13,22 @@ const Sidebar = ({ isOpen }) => {
       }`}
     >
       {/* <h2 className="text-xl font-semibold">Sidebar</h2> */}
-      <Image src={logoSideBar} alt="Logo Sidebar" width={35} height={35} />
+
+      <Image
+        src={logoSideBar}
+        alt="Logo Sidebar"
+        width={35}
+        height={35}
+        onClick={() => router.push("/")}
+        className="cursor-pointer"
+      />
+
       <p className="text-l font-semibold text-gray-500 mt-8">Pages</p>
       <ul className="mt-3">
-        <li className="mb-2 hover:bg-gray-900 px-3 py-3 rounded-md">
+        <li
+          className="mb-2 hover:bg-gray-900 px-3 py-3 rounded-md"
+          onClick={() => router.push("/")}
+        >
           <Image
             src={iconProduct}
             alt="Icon Product"
@@ -29,7 +43,10 @@ const Sidebar = ({ isOpen }) => {
             Product
           </a>
         </li>
-        <li className="mb-2 hover:bg-gray-900 px-3 py-3 rounded-md">
+        <li
+          className="mb-2 hover:bg-gray-900 px-3 py-3 rounded-md"
+          onClick={() => router.push("/users")}
+        >
           <Image
             src={iconUser}
             alt="Icon User"

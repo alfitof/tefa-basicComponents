@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
+import Table from "../components/Table";
+import Dropdown from "../components/Dropdown";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Home = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(true);
@@ -9,6 +12,21 @@ const Home = () => {
   const toggleSidebar = () => {
     setSidebarOpen(!isSidebarOpen);
   };
+  const router = useRouter();
+
+  const handleRowClick = (product) => {
+    router.push({
+      pathname: `/products/${product.id}`,
+    });
+  };
+  const columns = [
+    { header: "ID", field: "id" },
+    { header: "Product Name", field: "productName" },
+    { header: "Description", field: "description" },
+    { header: "Product Price", field: "productPrice" },
+    { header: "Category", field: "category" },
+    { header: "Expire Date", field: "expireDate" },
+  ];
 
   const products = [
     {
@@ -27,6 +45,14 @@ const Home = () => {
       category: "Category B",
       expireDate: "2023-06-15",
     },
+    {
+      id: 3,
+      productName: "Product 3",
+      description: "Amratur Elisio Saikoro",
+      productPrice: 39.99,
+      category: "Category C",
+      expireDate: "2023-07-08",
+    },
     // Tambahkan data produk lainnya di sini
   ];
 
@@ -34,8 +60,9 @@ const Home = () => {
     <div>
       <Header />
       <button
-        className="fixed bottom-4 right-4 z-50 p-2 text-gray-600 bg-gray-400 rounded-md shadow"
+        className="fixed bottom-4 visible lg:invisible right-4 z-50 p-2 text-gray-600 bg-gray-400 rounded-md shadow"
         onClick={toggleSidebar}
+        id="buttonSide"
       >
         <svg
           className="w-6 h-6"
@@ -54,52 +81,27 @@ const Home = () => {
       </button>
       <Sidebar isOpen={isSidebarOpen} />
       <main className={`px-6 pb-6 pt-20 ${isSidebarOpen ? "ml-64" : "ml-0"}`}>
-        <div className="px-10 py-10  bg-white rounded-md border-b-2 border-gray-100 drop-shadow-lg ">
-          <div className="flex items-center justify-between mb-4">
+        <div className="px-10 py-10  bg-white rounded-md drop-shadow-lg ">
+          <div className="flex items-center align-middle justify-between mb-4">
             <h1 className="text-lg text-gray-950 font-medium">Products</h1>
-            <button className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none">
-              Tambah Produk Baru
-            </button>
+            <div className="justify-end flex sm:inline">
+              <label class="mr-6">
+                <input type="checkbox" className="form-checkbox mr-2" />
+                <span className="text-gray-800">Hide expired product</span>
+              </label>
+              <Dropdown />
+              <button className="px-4 text-sm py-2 ml-6 bg-indigo-500 font-medium text-white rounded-md hover:bg-blue-600 focus:outline-none">
+                Add New Product
+              </button>
+            </div>
           </div>
           <hr className="mb-4" />
-          <div class="relative overflow-x-auto">
-            <table className="w-full border-collapse">
-              <thead>
-                <tr className="bg-gray-200">
-                  <th className="py-2 px-4 ">Product Name</th>
-                  <th className="py-2 px-4 ">Description</th>
-                  <th className="py-2 px-4 ">Product Price</th>
-                  <th className="py-2 px-4 ">Category</th>
-                  <th className="py-2 px-4 ">Expire Date</th>
-                  <th className="py-2 px-4 ">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                {products.map((product) => (
-                  <tr key={product.id}>
-                    <td className="py-2 px-4 text-center">
-                      <Link href={`/products/${product.id}`}>
-                        {product.productName}
-                      </Link>
-                    </td>
-                    <td className="py-2 px-4 text-center">
-                      {product.description}
-                    </td>
-                    <td className="py-2 px-4 text-center">
-                      {product.productPrice}
-                    </td>
-                    <td className="py-2 px-4 text-center">
-                      {product.category}
-                    </td>
-                    <td className="py-2 px-4 text-center">
-                      {product.expireDate}
-                    </td>
-                    <td className="py-2 px-4 text-center">Actions</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+
+          <Table
+            items={products}
+            columns={columns}
+            handleRowClick={handleRowClick}
+          />
         </div>
       </main>
     </div>
