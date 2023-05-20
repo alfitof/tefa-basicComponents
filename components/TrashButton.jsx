@@ -14,7 +14,6 @@ const TrashButton = ({ props }) => {
   };
 
   const handleDeleteItem = (event) => {
-    // Lakukan aksi penghapusan item
     event.stopPropagation();
     setIsOpen(false);
   };
